@@ -1,0 +1,3 @@
+/* pages/login/login.wxss */
+.login { display: flex; flex-direction: column; align-items: center; padding-top: 200rpx; gap: 60rpx; }
+.slogan { font-size: 32rpx; color: var(--text-2); }

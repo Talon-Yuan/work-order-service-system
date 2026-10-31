@@ -1,0 +1,11 @@
+/* pages/subscribe/subscribe.wxss */
+.page { padding: 24rpx 32rpx 60rpx; color: #E8ECF4; background: #0A0E14; min-height: 100vh; }
+.page-title { font-size: 36rpx; font-weight: 600; margin-bottom: 16rpx; }
+.guide { text-align: left; color: #8A93A6; font-size: 24rpx; padding: 0 0 24rpx; }
+.page-hint { color: #8A93A6; padding: 40rpx 0; text-align: center; }
+.sub-card { display: flex; justify-content: space-between; align-items: center; background: #141B26; border-radius: 16rpx; padding: 24rpx; margin-bottom: 20rpx; }
+.sub-left { flex: 1; }
+.sub-name { font-size: 30rpx; color: #E8ECF4; }
+.sub-desc { font-size: 24rpx; color: #8A93A6; margin-top: 6rpx; }
+.sub-right { font-size: 24rpx; color: #8A93A6; border: 1rpx solid #3A4554; border-radius: 999rpx; padding: 8rpx 20rpx; }
+.sub-right.granted { color: #3ECF8E; border-color: #3ECF8E; }

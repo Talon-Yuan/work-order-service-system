@@ -1,0 +1,6 @@
+<!-- pages/workorders/workorders.wxml -->
+<view class="page">
+  <view class="page-title">{i18n.workorder}</view>
+  <view class="page-hint">{i18n.skeletonHint}</view>
+  <w-button text="{i18n.skeletonAction}" bind:tap="onTapDemo" />
+</view>

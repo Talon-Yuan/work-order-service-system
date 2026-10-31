@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "登录",
+  "usingComponents": {
+    "w-button": "/components/w-button/w-button",
+    "w-card": "/components/w-card/w-card",
+    "w-toast": "/components/w-toast/w-toast",
+    "w-modal": "/components/w-modal/w-modal",
+    "w-status-dot": "/components/w-status-dot/w-status-dot"
+  }
+}

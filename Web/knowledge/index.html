@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>售后服务平台 · 知识库管理</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    .page { max-width: 1080px; margin: 0 auto; padding: 32px 20px 60px; }
+    .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .top h1 { font-size: 26px; margin: 0; }
+    .top .sub { color: #8a94a6; font-size: 13px; margin-top: 4px; }
+    .link { color: #4f8cff; font-size: 13px; text-decoration: none; }
+    .toolbar { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+    .search { flex: 1; min-width: 220px; padding: 10px 14px; border: 1px solid #e3e8f0; border-radius: 8px; background: #fff; color: #3d4657; }
+    .btn { padding: 10px 18px; border: 0; border-radius: 8px; background: #f59e0b; color: #1a1308; font-size: 14px; cursor: pointer; font-weight: 600; }
+    .btn-plain { background: #eef2f8; color: #3d4657; }
+    .btn-danger { background: #fef2f2; color: #dc2626; }
+    .chip { display: inline-block; padding: 6px 16px; margin: 0 8px 8px 0; border-radius: 20px; font-size: 13px; color: #6b7686; background: #f4f6fa; cursor: pointer; }
+    .chip.on { color: #1a1308; background: #f59e0b; }
+    .card { background: #fff; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.04); display: flex; align-items: center; }
+    .kb-title { flex: 1; font-size: 15px; font-weight: 600; color: #3d4657; }
+    .kb-vis { padding: 3px 12px; border-radius: 20px; font-size: 12px; margin: 0 8px; }
+    .vis-public { color: #16a34a; background: #f0fdf4; }
+    .vis-internal { color: #f59e0b; background: #fffbeb; }
+    .kb-meta { color: #a5adbb; font-size: 12px; margin: 0 8px; }
+    .op { padding: 6px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; border: 0; background: #eef2f8; color: #3d4657; margin-left: 8px; }
+    .op.danger { background: #fef2f2; color: #dc2626; }
+    .form { background: #fff; border: 1px solid #fcd9a4; border-radius: 12px; padding: 20px; margin-bottom: 18px; }
+    .form h3 { margin: 0 0 14px; font-size: 16px; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 13px; color: #6b7686; margin-bottom: 6px; }
+    .field input, .field select, .field textarea { width: 100%; box-sizing: border-box; padding: 10px 14px; border: 1px solid #e3e8f0; border-radius: 8px; font-size: 14px; color: #3d4657; }
+    .field textarea { min-height: 160px; resize: vertical; }
+    .row { display: flex; gap: 12px; }
+    .row .field { flex: 1; }
+    .empty { text-align: center; color: #a5adbb; padding: 60px 0; }
+    .hidden { display: none; }
+    .err { margin-top: 10px; padding: 12px 16px; border-radius: 8px; background: #fef2f2; color: #dc2626; font-size: 13px; }
+    body.dark .card, body.dark .form { background: #1c2333; }
+    body.dark .search, body.dark .field input, body.dark .field select, body.dark .field textarea { background: #141a28; border-color: #2b3448; color: #dfe6f1; }
+    body.dark .kb-title { color: #dfe6f1; }
+    body.dark .chip { color: #aab4c8; background: #232c40; }
+    body.dark .btn-plain { background: #232c40; color: #aab4c8; }
+    body.dark .top h1 { color: #fff; }
+    body.dark .sub, body.dark .kb-meta, body.dark .empty { color: #7c879c; }
+    body.dark .form { border-color: #3a3f52; }
+    body.dark .op { background: #232c40; color: #aab4c8; }
+  </style>
+</head>
+<body class="dark">
+  <main class="page">
+    <div class="top">
+      <div>
+        <h1>知识库管理</h1>
+        <p class="sub" id="sub">管理端 · 文章增删改查 / 两级可见范围 / 从工单沉淀（服务端按角色裁剪）</p>
+      </div>
+      <a class="link" href="../login/index.html">返回登录</a>
+    </div>
+    <div class="err hidden" id="err"></div>
+
+    <!-- 表单面板 -->
+    <div class="form hidden" id="formBox">
+      <h3 id="formTitle">新建文章</h3>
+      <div class="row">
+        <div class="field" style="flex:2"><label>文章标题</label><input id="fTitle" maxlength="120" /></div>
+        <div class="field"><label>分类</label>
+          <select id="fCategory">
+            <option value="guide">使用指南</option>
+            <option value="faq">常见问题</option>
+            <option value="tutorial">操作教程</option>
+            <option value="policy">政策说明</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field"><label>可见范围</label>
+          <select id="fVisibility">
+            <option value="public">客户可见</option>
+            <option value="internal">内部可见</option>
+          </select>
+        </div>
+        <div class="field"><label>状态</label>
+          <select id="fStatus">
+            <option value="draft">草稿</option>
+            <option value="published">已发布</option>
+            <option value="archived">已归档</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>正文</label><textarea id="fContent" maxlength="8000"></textarea></div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn" id="btnSave">保存</button>
+        <button class="btn btn-plain" id="btnCancel">取消</button>
+      </div>
+    </div>
+
+    <!-- 从工单沉淀 -->
+    <div class="form hidden" id="fromWoBox">
+      <h3>从工单沉淀案例</h3>
+      <div class="row">
+        <div class="field" style="flex:2"><label>工单号</label><input id="fWoId" placeholder="输入已闭环工单号" /></div>
+        <div class="field"><label>文章标题</label><input id="fWoTitle" maxlength="120" /></div>
+        <div class="field"><label>分类</label>
+          <select id="fWoCategory">
+            <option value="guide">使用指南</option>
+            <option value="faq">常见问题</option>
+            <option value="tutorial">操作教程</option>
+            <option value="policy">政策说明</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn" id="btnFromWoSubmit">生成文章</button>
+        <button class="btn btn-plain" id="btnFromWoCancel">取消</button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input class="search" id="keyword" placeholder="搜索标题关键词" />
+      <button class="btn btn-plain" id="btnSearch">搜索</button>
+      <span id="cats"></span>
+      <button class="btn" id="btnNew">新建文章</button>
+      <button class="btn btn-plain" id="btnFromWo">从工单沉淀</button>
+    </div>
+
+    <div id="list"></div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

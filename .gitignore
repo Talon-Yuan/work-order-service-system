@@ -1,0 +1,50 @@
+# ---- 微信售后服务平台 .gitignore ----
+# 安全红线：确保密钥/凭据/产物永不入库
+
+# 依赖
+node_modules/
+miniprogram_npm/
+
+# 云开发构建产物
+cloudfunctions/**/node_modules/
+cloudfunctions/**/common/node_modules/
+
+# 环境与密钥（严禁提交）
+.env
+.env.*
+*.env.local
+config/env.local.json
+project.private.config.json
+
+# 密钥残留风险文件（scripts/scan_secrets.py 扫描对象）
+*.pem
+*.key
+!test/**/*.pem
+secrets*.json
+
+# 日志
+logs/
+*.log
+npm-debug.log*
+
+# 构建与缓存
+dist/
+build/
+.temp/
+.cache/
+miniprogram/.scaffold
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本地开发目录
+.idea/
+.vscode/
+*.suo
+*.user
+
+# 中间产物（不入库）
+temp/
+*.bak

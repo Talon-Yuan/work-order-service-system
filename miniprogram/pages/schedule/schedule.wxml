@@ -1,0 +1,44 @@
+<!-- pages/schedule/schedule.wxml -->
+<!-- 阶段3：排班日历月视图（骨架可运行） -->
+<view class="page">
+  <!-- 月份切换 -->
+  <view class="cal-header">
+    <view class="cal-nav" bindtap="prevMonth">‹</view>
+    <view class="cal-title">{{year}}年{{month}}月</view>
+    <view class="cal-nav" bindtap="nextMonth">›</view>
+  </view>
+
+  <!-- 星期表头 -->
+  <view class="cal-week">
+    <view class="cal-week-cell" wx:for="{{['一','二','三','四','五','六','日']}}" wx:key="*this">{{item}}</view>
+  </view>
+
+  <!-- 日期格子 -->
+  <view class="cal-grid">
+    <block wx:for="{{cells}}" wx:key="date">
+      <view wx:if="{{item}}" class="cal-cell {{item.isToday ? 'today' : ''}} {{item.busy ? 'busy' : 'free'}} {{item.hasSchedule ? '' : 'no-sched'}} {{item.weekend ? 'weekend' : ''}}"
+            data-date="{{item.date}}" bindtap="onTapCell">
+        <view class="cal-day">{{item.day}}</view>
+        <view class="cal-tag" wx:if="{{item.busy}}">忙</view>
+        <view class="cal-tag free-tag" wx:elif="{{item.free}}">闲</view>
+        <view class="cal-tag gray-tag" wx:else>—</view>
+      </view>
+      <view wx:else class="cal-cell placeholder"></view>
+    </block>
+  </view>
+
+  <!-- 图例 -->
+  <view class="legend">
+    <view class="legend-item"><view class="dot free-dot"></view>空闲 · 可预约</view>
+    <view class="legend-item"><view class="dot busy-dot"></view>已占用（排班/预约）</view>
+    <view class="legend-item"><view class="dot today-dot"></view>今天</view>
+  </view>
+
+  <!-- 工程师名单（点击日期后用于发起预约） -->
+  <view class="eng-list" wx:if="{{engineers.length}}">
+    <view class="eng-title">可选工程师</view>
+    <view class="eng-item" wx:for="{{engineers}}" wx:key="_id" data-date="{{selected.date}}" data-eng-id="{{item._id}}" bindtap="onTapCell">
+      <text>{{item.name || item.nickName || item._id}}</text>
+    </view>
+  </view>
+</view>

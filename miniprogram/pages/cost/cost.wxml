@@ -1,0 +1,79 @@
+<!-- pages/cost/cost.wxml — 成本统计（阶段7-2） -->
+<view class="page">
+  <view class="page-title">{i18n.costTitle}</view>
+  <view class="page-hint">{i18n.costDynamic}</view>
+
+  <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
+  <view wx:elif="{{!summary}}" class="page-hint">{i18n.costNoData}</view>
+  <view wx:else>
+    <!-- 汇总 -->
+    <view class="w-card">
+      <view class="card-title">{i18n.costTotal}</view>
+      <view class="big-num">¥ {{(summary.total_cost_fen / 100).toFixed(2)}}</view>
+      <view class="kv-row"><text>{i18n.costCount}</text><text>{{summary.work_order_count}}</text></view>
+      <view class="kv-row"><text>{i18n.costAvg}</text><text>¥ {{(summary.avg_cost_fen / 100).toFixed(2)}}</text></view>
+    </view>
+
+    <!-- 成本构成 -->
+    <view class="w-card">
+      <view class="card-title">{i18n.costComposition}</view>
+      <view class="kv-row"><text>{i18n.costParts}</text><text>¥ {{(summary.parts_cost_fen / 100).toFixed(2)}}</text></view>
+      <view class="kv-row"><text>{i18n.costLabor}</text><text>¥ {{(summary.labor_fee_fen / 100).toFixed(2)}}</text></view>
+      <view class="kv-row"><text>{i18n.costTransport}</text><text>¥ {{(summary.transport_fee_fen / 100).toFixed(2)}}</text></view>
+    </view>
+
+    <!-- 近6月趋势 -->
+    <view class="w-card">
+      <view class="card-title">{i18n.costTrend}</view>
+      <view class="trend-row head">
+        <text class="trend-date">month</text>
+        <text class="trend-cell">{i18n.costCount}</text>
+        <text class="trend-cell">¥</text>
+      </view>
+      <view class="trend-row" wx:for="{{trend}}" wx:key="month">
+        <text class="trend-date">{{item.month}}</text>
+        <text class="trend-cell">{{item.work_order_count}}</text>
+        <text class="trend-cell">{{item.total_yuan}}</text>
+      </view>
+    </view>
+
+    <!-- TOP10 -->
+    <view class="w-card">
+      <view class="card-title">{i18n.costTop10}</view>
+      <view class="top-row" wx:for="{{top}}" wx:key="work_order_no">
+        <view class="top-main">
+          <text class="top-no">{{item.work_order_no}}</text>
+          <text class="top-sub">{{item.device_name}} · {{item.service_type}}</text>
+        </view>
+        <text class="top-amt">¥ {{item.cost_yuan}}</text>
+      </view>
+    </view>
+
+    <!-- 成本参数（仅 admin 可编辑） -->
+    <view class="w-card" wx:if="{{canWrite}}">
+      <view class="card-title">{i18n.costConfig}</view>
+      <block wx:if="{{!editing}}">
+        <view class="kv-row"><text>{i18n.costLaborRate}</text><text>{{config.labor_rate.per_hour_fen / 100}}</text></view>
+        <view class="kv-row"><text>{i18n.costTransportBase}</text><text>{{config.transport.base_fen / 100}}</text></view>
+        <view class="kv-row"><text>{i18n.costTransportPerKm}</text><text>{{config.transport.per_km_fen / 100}}</text></view>
+        <w-button text="{i18n.costEditing}" bind:tap="onEditConfig" />
+      </block>
+      <block wx:else>
+        <view class="form-row">
+          <text class="form-label">{i18n.costLaborRate}</text>
+          <input class="form-input" type="digit" value="{{form.labor_hour_rate_fen}}" data-key="labor_hour_rate_fen" bindinput="onInput" />
+        </view>
+        <view class="form-row">
+          <text class="form-label">{i18n.costTransportBase}</text>
+          <input class="form-input" type="digit" value="{{form.transport_base_fen}}" data-key="transport_base_fen" bindinput="onInput" />
+        </view>
+        <view class="form-row">
+          <text class="form-label">{i18n.costTransportPerKm}</text>
+          <input class="form-input" type="digit" value="{{form.transport_per_km_fen}}" data-key="transport_per_km_fen" bindinput="onInput" />
+        </view>
+        <w-button text="{i18n.costSave}" bind:tap="onSaveConfig" />
+        <w-button text="{i18n.cancel}" bind:tap="onCancelEdit" />
+      </block>
+    </view>
+  </view>
+</view>

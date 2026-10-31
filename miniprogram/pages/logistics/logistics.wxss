@@ -1,0 +1,19 @@
+/* pages/logistics/logistics.wxss */
+.page { padding: 24rpx 32rpx 60rpx; color: #E8ECF4; background: #0A0E14; min-height: 100vh; }
+.page-title { font-size: 36rpx; font-weight: 600; margin-bottom: 24rpx; }
+.page-hint { color: #8A93A6; padding: 40rpx 0; text-align: center; }
+.w-card { background: #141B26; border-radius: 16rpx; padding: 24rpx; margin-bottom: 24rpx; }
+.card-title { font-size: 28rpx; color: #FF9F43; margin-bottom: 16rpx; }
+.lg-row { display: flex; justify-content: space-between; padding: 8rpx 0; font-size: 28rpx; }
+.lg-label { color: #8A93A6; }
+.lg-status { color: #FF9F43; }
+.lg-sub-row { padding: 8rpx 0; color: #3ECF8E; font-size: 24rpx; }
+.lg-card { margin-bottom: 20rpx; }
+.detail-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24rpx; }
+.back { color: #FF9F43; font-size: 30rpx; }
+.trace-item { display: flex; padding: 16rpx 0; border-bottom: 1rpx solid #1E2834; }
+.trace-dot { width: 14rpx; height: 14rpx; border-radius: 50%; background: #3A4554; margin: 10rpx 20rpx 0 0; flex-shrink: 0; }
+.trace-dot.active { background: #FF9F43; }
+.trace-body { display: flex; flex-direction: column; }
+.trace-desc { font-size: 28rpx; color: #E8ECF4; }
+.trace-time { font-size: 22rpx; color: #8A93A6; margin-top: 6rpx; }

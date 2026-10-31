@@ -1,0 +1,136 @@
+{
+  "total": 26,
+  "passed": 26,
+  "checks": [
+    {
+      "name": "admin 通配全权限（含评价/回访/知识库全部）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 可提交/查看本人评价",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 不可满意度统计（内部指标）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 不可创建/记录回访计划",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 可查本人回访计划",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 可读知识库列表与详情",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 不可写知识库",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "engineer 可写知识库与工单沉淀",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "engineer 可查被评记录与统计",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "owner 可创建/记录回访",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "owner 可读内部知识库",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可见性-客户可见 public+published",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可见性-客户不可见 internal 已发布",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可见性-客户不可见 public 草稿/归档",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可见性-owner/engineer 可见 internal",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可见性-内部角色不可见归档",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可见性-admin 全量（含归档 internal）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "查询条件-客户仅 public+published（双重隔离）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "查询条件-owner/engineer 排除归档",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "查询条件-admin 全量",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "评价标签白名单-4 类且合法标签全通过",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "评价标签白名单-非法标签拒绝",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "脱敏-openid 长串",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "脱敏-openid 空值",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可评状态-accepted/closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可评状态-未验收工单不可评",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

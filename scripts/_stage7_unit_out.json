@@ -1,0 +1,81 @@
+{
+  "total": 15,
+  "passed": 15,
+  "checks": [
+    {
+      "name": "admin 通配全权限（含成本写/导出）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 可看板 overview",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 可导出本人记录",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 无成本统计权限",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "customer 无成本参数读写",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "owner 可成本统计与参数读",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "owner 不可写成本参数（仅 admin）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "engineer 可成本统计",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "engineer 不可写成本参数",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "脱敏-手机号",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "脱敏-地址",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "脱敏-openid",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "脱敏-空值",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "趋势桶-30天连续且覆盖末天",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "趋势桶-键格式 YYYY-MM-DD",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

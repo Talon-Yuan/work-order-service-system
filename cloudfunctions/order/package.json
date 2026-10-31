@@ -1,0 +1,9 @@
+{
+  "name": "order",
+  "version": "0.1.0",
+  "description": "备件商城购物车/下单/订单管理云函数（阶段4）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

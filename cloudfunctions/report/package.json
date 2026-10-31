@@ -1,0 +1,10 @@
+{
+  "name": "report",
+  "version": "0.1.0",
+  "description": "V3.1 阶段5 工单闭环与服务报告 - report",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "pdfkit": "^0.15.0"
+  }
+}

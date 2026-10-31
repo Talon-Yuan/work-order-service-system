@@ -1,0 +1,9 @@
+{
+  "name": "service-common",
+  "version": "0.1.0",
+  "description": "微信售后服务平台云函数公共模块：authGuard / response / security / rateLimit / tokenStore / constants",
+  "main": "authGuard.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

@@ -1,0 +1,19 @@
+<!-- pages/store/store.wxml -->
+<view class="page">
+  <view class="page-title">{i18n.partsMall}</view>
+  <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
+  <view wx:elif="{{parts.length === 0}}" class="page-hint">{i18n.empty}</view>
+  <view wx:else class="part-list">
+    <view class="part-card" wx:for="{{parts}}" wx:key="_id">
+      <view class="part-name">{{item.part_name}}</view>
+      <view class="part-meta">{{item.part_no}} · {{item.model}} · {{item.spec}}</view>
+      <view class="part-price">¥{{item.price_yuan}} / {{item.unit}}</view>
+      <view class="part-desc">{{item.desc}}</view>
+      <w-button text="{i18n.addToCart}" bind:tap="onAddCart" data-id="{{item._id}}" />
+    </view>
+  </view>
+  <view class="cart-bar" wx:if="{{cartCount > 0}}" bind:tap="onGoCheckout">
+    <text class="cart-bar-left">{i18n.cart}（{{cartCount}}）</text>
+    <text class="cart-bar-go">{i18n.goCheckout}</text>
+  </view>
+</view>

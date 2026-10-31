@@ -1,0 +1,2 @@
+<!-- components/w-modal/w-modal.wxml -->
+<view class="c-modal" wx:if="{visible}">{text}</view>

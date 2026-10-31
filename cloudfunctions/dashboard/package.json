@@ -1,0 +1,9 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "阶段7-1 数据看板：KPI 聚合 + 趋势（云函数聚合，行级过滤三档可见）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

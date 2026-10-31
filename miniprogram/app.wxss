@@ -1,0 +1,59 @@
+/**
+ * app.wxss — 全局视觉 Token（深空工业感 + 金属琥珀强调色）
+ * 视觉基准：prototype_v3.html（--bg #0A0E14 / --accent #FF9F43）
+ * 安全红线：本文件仅声明样式，严禁出现任何密钥/AppSecret/商户号字面量
+ */
+page {
+  --bg: #0A0E14;            /* 深空底色 */
+  --bg-2: #0D121A;          /* 次级底色 */
+  --panel: #131A24;         /* 卡片面板 */
+  --panel-2: #182130;       /* 面板强调层 */
+  --accent: #FF9F43;        /* 金属琥珀强调色 */
+  --accent-soft: rgba(255, 159, 67, 0.14);
+  --text: #E6E8EE;          /* 主文字 */
+  --text-2: #8A93A6;        /* 次级文字 */
+  --line: #232B37;          /* 分隔线 */
+  --success: #3DDC97;
+  --warning: #FFB84D;
+  --danger: #FF5C5C;
+  --info: #4DA3FF;
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+/* 呼吸灯（状态点/待处理提醒） */
+@keyframes breathe {
+  0%, 100% { opacity: 0.45; box-shadow: 0 0 6rpx 0 var(--accent); }
+  50% { opacity: 1; box-shadow: 0 0 18rpx 4rpx var(--accent); }
+}
+.breathe { animation: breathe 1.8s ease-in-out infinite; }
+
+/* 卡片通用 */
+.card {
+  background: var(--panel);
+  border: 1rpx solid var(--line);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+/* 页面容器 */
+.page { padding: 24rpx 28rpx; }
+
+/* 按钮主色 */
+.btn-primary {
+  background: linear-gradient(135deg, #FF9F43 0%, #FF7A3C 100%);
+  color: #0A0E14;
+  font-weight: 700;
+  border-radius: 999rpx;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1rpx solid var(--line);
+  color: var(--text-2);
+  border-radius: 999rpx;
+}

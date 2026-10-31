@@ -1,0 +1,9 @@
+{
+  "name": "cost-stats",
+  "version": "1.0.0",
+  "description": "阶段7-2 成本统计：汇总/近6月趋势/构成/TOP + 成本参数（仅 admin 写，带审计）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

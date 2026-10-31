@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "物流追踪",
+  "usingComponents": {
+    "w-button": "/components/w-button/w-button",
+    "w-card": "/components/w-card/w-card"
+  }
+}

@@ -1,0 +1,2 @@
+<!-- components/w-button/w-button.wxml -->
+<view class="c-button" wx:if="{visible}">{text}</view>

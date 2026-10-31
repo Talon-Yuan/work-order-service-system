@@ -1,0 +1,9 @@
+{
+  "name": "inventory",
+  "version": "0.1.0",
+  "description": "库存流水与防超卖云函数（阶段4）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

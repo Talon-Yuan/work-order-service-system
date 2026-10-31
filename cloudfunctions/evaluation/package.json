@@ -1,0 +1,9 @@
+{
+  "name": "evaluation",
+  "version": "1.0.0",
+  "description": "阶段8-2 服务评价与回访：提交/查看/满意度统计 + 回访计划创建/查看/记录（审计+限流+行级隔离）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

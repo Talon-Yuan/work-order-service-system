@@ -1,0 +1,5 @@
+<!-- pages/login/login.wxml -->
+<view class="login">
+  <view class="slogan">{{i18n.slogan}}</view>
+  <w-button text="{{i18n.loginBtn}}" loading="{{submitting}}" bind:tap="onLogin" />
+</view>

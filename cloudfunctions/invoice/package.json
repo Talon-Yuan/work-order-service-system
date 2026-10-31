@@ -1,0 +1,9 @@
+{
+  "name": "invoice",
+  "version": "0.1.0",
+  "description": "发票登记与通知云函数（阶段4）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

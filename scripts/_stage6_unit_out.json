@@ -1,0 +1,211 @@
+{
+  "total": 41,
+  "passed": 41,
+  "checks": [
+    {
+      "name": "U1a 阶段6动作码齐全",
+      "pass": true,
+      "detail": "ACTIONS 阶段6动作码"
+    },
+    {
+      "name": "U1b 物流四态",
+      "pass": true,
+      "detail": "LOGISTICS_STATUS"
+    },
+    {
+      "name": "U1c 订阅六模板",
+      "pass": true,
+      "detail": "SUB_TEMPLATE_TYPES"
+    },
+    {
+      "name": "U1d 定时四任务",
+      "pass": true,
+      "detail": "CRON_JOBS"
+    },
+    {
+      "name": "U1e 客户物流/订阅只读权限",
+      "pass": true,
+      "detail": "customer caps"
+    },
+    {
+      "name": "U1f 客户不得越权发货/发送订阅",
+      "pass": true,
+      "detail": "customer 无 LOGISTICS_CREATE/SUBSCRIBE_SEND"
+    },
+    {
+      "name": "U1g owner 可发货、admin 全权限",
+      "pass": true,
+      "detail": "owner/admin caps"
+    },
+    {
+      "name": "U2a 发货建单成功（owner）",
+      "pass": true,
+      "detail": "{\"code\":0,\"msg\":\"ok\",\"data\":{\"waybill_id\":\"id_19\",\"status\":\"pending\",\"subscribed\":false,\"warning\":\"LOGISTICS_NOT_CONFIGURED\",\"hint\":\"请配置 KUAIDI100_KEY/KUAIDI100_CUSTOMER/KUAIDI100_CALLBACK_URL 后重试订阅\"}}"
+    },
+    {
+      "name": "U2b 运单落库字段正确",
+      "pass": true,
+      "detail": "{\"_id\":\"id_19\",\"order_id\":\"o1\",\"order_no\":\"WO20261001001\",\"customer_openid\":\"openid_customer\",\"carrier\":\"SF\",\"carrier_name\":\"顺丰速运\",\"tracking_no\":\"SF1234567890\",\"status\":\"pending\",\"raw_trace\":[],\"subscribed\":false,\"subscribe_error\":\"LOGISTICS_NOT_CONFIGURED\",\"created_at\":\"2026-10-30T19:57:38.711Z\",\"updated_at\":\"2026-10-30T19:57:38.711Z\"}"
+    },
+    {
+      "name": "U2c 密钥未配置明确提示",
+      "pass": true,
+      "detail": "warning=LOGISTICS_NOT_CONFIGURED"
+    },
+    {
+      "name": "U2d 订单补齐物流号",
+      "pass": true,
+      "detail": "order logistics_no"
+    },
+    {
+      "name": "U3 重复建单幂等",
+      "pass": true,
+      "detail": "{\"waybill_id\":\"id_19\",\"existed\":true}"
+    },
+    {
+      "name": "U4 验签失败拒绝且不落库",
+      "pass": true,
+      "detail": "{\"code\":401,\"msg\":\"SIGN_VERIFY_FAILED\",\"data\":null}"
+    },
+    {
+      "name": "U5a 验签通过回调写入",
+      "pass": true,
+      "detail": "{\"code\":0,\"msg\":\"ok\",\"data\":{\"result\":true,\"returnCode\":\"200\"}}"
+    },
+    {
+      "name": "U5b 状态 pending→delivered",
+      "pass": true,
+      "detail": "status=delivered"
+    },
+    {
+      "name": "U5c 轨迹合并落库",
+      "pass": true,
+      "detail": "trace=1"
+    },
+    {
+      "name": "U5d 订单联动 shipped→completed",
+      "pass": true,
+      "detail": "order status"
+    },
+    {
+      "name": "U5e 站内物流通知写入",
+      "pass": true,
+      "detail": "notifications logistics"
+    },
+    {
+      "name": "U6a 状态 pending→in_transit",
+      "pass": true,
+      "detail": "status=in_transit"
+    },
+    {
+      "name": "U6b 运输中不误签收订单",
+      "pass": true,
+      "detail": "order status=shipped"
+    },
+    {
+      "name": "U7 客户可查本人运单轨迹",
+      "pass": true,
+      "detail": "{\"waybill_id\":\"id_19\",\"order_id\":\"o1\",\"carrier\":\"SF\",\"carrier_name\":\"顺丰速运\",\"tracking_no\":\"SF1234567890\",\"status\":\"delivered\",\"subscribed\":false,\"updated_at\":\"2026-10-30T19:57:38.715Z\"}"
+    },
+    {
+      "name": "U8 非本人查询被行级隔离拒绝",
+      "pass": true,
+      "detail": "{\"code\":404,\"msg\":\"WAYBILL_NOT_FOUND\",\"data\":null}"
+    },
+    {
+      "name": "U9 按 order_id 定位运单",
+      "pass": true,
+      "detail": "{\"waybill_id\":\"id_19\",\"order_id\":\"o1\",\"carrier\":\"SF\",\"carrier_name\":\"顺丰速运\",\"tracking_no\":\"SF1234567890\",\"status\":\"delivered\",\"subscribed\":false,\"updated_at\":\"2026-10-30T19:57:38.715Z\"}"
+    },
+    {
+      "name": "U10 模板列表 6 类且 ID 来自环境变量",
+      "pass": true,
+      "detail": "items=6"
+    },
+    {
+      "name": "U11 授权登记成功",
+      "pass": true,
+      "detail": "{\"work_order_progress\":\"2026-10-30T19:57:38.716Z\",\"logistics_dynamic\":\"2026-10-30T19:57:38.716Z\"}"
+    },
+    {
+      "name": "U12 授权状态展示",
+      "pass": true,
+      "detail": "[{\"template_type\":\"appointment_approved\",\"name_key\":\"subAppointmentApproved\",\"desc_key\":\"subAppointmentApprovedDesc\",\"granted\":false,\"granted_at\":null},{\"template_type\":\"visit_reminder\",\"name_key\":\"subVisitReminder\",\"desc_key\":\"subVisitReminderDesc\",\"granted\":false,\"granted_at\":null},{\"template_type\":\"work_order_progress\",\"name_key\":\"subWorkOrderProgress\",\"desc_key\":\"subWorkOrderProgressDesc\",\"granted\":true,\"granted_at\":\"2026-10-30T19:57:38.716Z\"},{\"template_type\":\"logistics_dynamic\",\"name_key\":\"subLogisticsDynamic\",\"desc_key\":\"subLogisticsDynamicDesc\",\"granted\":true,\"granted_at\":\"2026-10-30T19:57:38.716Z\"},{\"template_type\":\"stock_alert\",\"name_key\":\"subStockAlert\",\"desc_key\":\"subStockAlertDesc\",\"granted\":false,\"granted_at\":null},{\"template_type\":\"maintenance_reminder\",\"name_key\":\"subMaintenanceReminder\",\"desc_key\":\"subMaintenanceReminderDesc\",\"granted\":false,\"granted_at\":null}]"
+    },
+    {
+      "name": "U13 内部密钥发送成功",
+      "pass": true,
+      "detail": "{\"code\":0,\"msg\":\"ok\",\"data\":{\"msg_id\":\"mock_msg_1\",\"template_type\":\"logistics_dynamic\"}}"
+    },
+    {
+      "name": "U14 普通用户发送被拒",
+      "pass": true,
+      "detail": "{\"code\":403,\"msg\":\"FORBIDDEN\",\"data\":null}"
+    },
+    {
+      "name": "U15 未授权模板返回 NOT_SUBSCRIBED",
+      "pass": true,
+      "detail": "{\"code\":403,\"msg\":\"NOT_SUBSCRIBED\",\"data\":null}"
+    },
+    {
+      "name": "U16a 保养提醒写入通知",
+      "pass": true,
+      "detail": "alerts={\"job\":\"maintenance_reminder\",\"scanned\":1,\"sent\":1}"
+    },
+    {
+      "name": "U16b 防重复标记落库",
+      "pass": true,
+      "detail": "reminded=Sun Nov 01 2026 03:57:38 GMT+0800 (中国标准时间)"
+    },
+    {
+      "name": "U16c 再次运行不重复提醒",
+      "pass": true,
+      "detail": "count=1"
+    },
+    {
+      "name": "U17 库存预警：低库存备件告警且正常件不告警",
+      "pass": true,
+      "detail": "{\"job\":\"stock_alert\",\"scanned\":2,\"alerts\":1}"
+    },
+    {
+      "name": "U18 超时未支付流水标记待核、成功流水不动",
+      "pass": true,
+      "detail": "{\"job\":\"pay_reconcile\",\"scanned\":1,\"flagged\":1}"
+    },
+    {
+      "name": "U19a 作废/超期报告归档、有效报告保留",
+      "pass": true,
+      "detail": "{\"job\":\"report_cleanup\",\"archived_count\":1,\"expired_exports\":1}"
+    },
+    {
+      "name": "U19b 过期导出链接置 expired、未到期保留",
+      "pass": true,
+      "detail": "e1=expired e2=active"
+    },
+    {
+      "name": "U20a 签收/退签映射",
+      "pass": true,
+      "detail": "3->delivered,4->exception"
+    },
+    {
+      "name": "U20b 在途/揽收/派件/转投/清关→in_transit",
+      "pass": true,
+      "detail": "0/1/5/7/8->in_transit"
+    },
+    {
+      "name": "U20c 疑难/退回→exception",
+      "pass": true,
+      "detail": "2/6->exception"
+    },
+    {
+      "name": "U20d 未知状态兜底 pending",
+      "pass": true,
+      "detail": "9/undefined->pending"
+    },
+    {
+      "name": "U21 日志脱敏",
+      "pass": true,
+      "detail": "SF12****7890"
+    }
+  ]
+}

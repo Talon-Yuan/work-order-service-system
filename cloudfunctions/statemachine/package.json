@@ -1,0 +1,9 @@
+{
+  "name": "statemachine",
+  "version": "0.1.0",
+  "description": "V3.1 阶段5 工单闭环与服务报告 - statemachine",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

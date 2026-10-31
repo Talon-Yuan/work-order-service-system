@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/booking/booking",
+    "pages/bookings/bookings",
+    "pages/approvals/approvals",
+    "pages/workorders/workorders",
+    "pages/workorder-detail/workorder-detail",
+    "pages/schedule/schedule",
+    "pages/store/store",
+    "pages/checkout/checkout",
+    "pages/orders/orders",
+    "pages/notifications/notifications",
+    "pages/mine/mine",
+    "pages/knowledge/knowledge",
+    "pages/knowledge-detail/knowledge-detail",
+    "pages/report/report",
+    "pages/review/review",
+    "pages/logistics/logistics",
+    "pages/subscribe/subscribe",
+    "pages/dashboard/dashboard",
+    "pages/cost/cost",
+    "pages/export/export"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0A0E14",
+    "navigationBarTitleText": "售后服务平台",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0A0E14"
+  },
+  "tabBar": {
+    "color": "#8A93A6",
+    "selectedColor": "#FF9F43",
+    "backgroundColor": "#0D121A",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/workorders/workorders",
+        "text": "workorder"
+      },
+      {
+        "pagePath": "pages/store/store",
+        "text": "store"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "mine"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

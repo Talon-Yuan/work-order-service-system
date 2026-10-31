@@ -1,0 +1,9 @@
+{
+  "name": "subscribe",
+  "version": "1.0.0",
+  "description": "阶段6 订阅消息体系（授权登记/发送）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

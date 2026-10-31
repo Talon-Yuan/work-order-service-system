@@ -1,0 +1,8 @@
+/* pages/index/index.wxss */
+.page { padding: 24rpx 28rpx; }
+.hello { font-size: 44rpx; font-weight: 800; color: var(--text); }
+.stats { display: flex; gap: 20rpx; margin: 24rpx 0; }
+.stats .num { font-size: 48rpx; font-weight: 800; color: var(--accent); }
+.stats .lbl { font-size: 24rpx; color: var(--text-2); }
+.quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20rpx; }
+.quick-grid .q { font-size: 28rpx; }

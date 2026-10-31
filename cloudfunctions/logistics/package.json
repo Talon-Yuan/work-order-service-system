@@ -1,0 +1,9 @@
+{
+  "name": "logistics",
+  "version": "1.0.0",
+  "description": "阶段6 物流追踪与订阅推送（快递100）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

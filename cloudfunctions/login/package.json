@@ -1,0 +1,10 @@
+{
+  "name": "login",
+  "version": "0.1.0",
+  "description": "微信售后服务平台 - 登录云函数：OpenID 会话 + Web 手机号验证码/密码登录 + openid 绑定（阶段2）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "bcryptjs": "^2.4.3"
+  }
+}

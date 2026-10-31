@@ -1,0 +1,9 @@
+{
+  "name": "workorder-detail",
+  "version": "0.1.0",
+  "description": "微信售后服务平台 - 工单详情云函数（阶段2：三档可见性 + 防水平越权）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

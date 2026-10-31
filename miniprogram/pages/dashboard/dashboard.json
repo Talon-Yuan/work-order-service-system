@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "数据看板",
+  "usingComponents": {
+    "w-button": "/components/w-button/w-button",
+    "w-card": "/components/w-card/w-card",
+    "w-toast": "/components/w-toast/w-toast"
+  }
+}

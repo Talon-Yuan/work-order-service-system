@@ -1,0 +1,10 @@
+{
+  "name": "export",
+  "version": "1.0.0",
+  "description": "阶段7-3 报表导出 Excel：SheetJS + 云存储私有读 + 临时链接 + 审计 + 限流 + export_records",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "xlsx": "^0.18.5"
+  }
+}

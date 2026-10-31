@@ -1,0 +1,17 @@
+<!-- pages/subscribe/subscribe.wxml -->
+<view class="page">
+  <view class="page-title">{i18n.subscribeManage}</view>
+  <view class="page-hint guide">{i18n.subscribeGuide}</view>
+  <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
+  <view wx:else>
+    <view class="sub-card" wx:for="{{items}}" wx:key="template_type" data-idx="{{index}}" bind:tap="onGrant">
+      <view class="sub-left">
+        <view class="sub-name">{{item.name_key}}</view>
+        <view class="sub-desc">{{item.desc_key}}</view>
+      </view>
+      <view class="sub-right {{item.granted ? 'granted' : ''}}">
+        {{item.granted ? i18n.subscribeGranted : i18n.subscribeNotGranted}}
+      </view>
+    </view>
+  </view>
+</view>

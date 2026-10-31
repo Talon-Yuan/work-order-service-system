@@ -1,0 +1,14 @@
+<!-- pages/index/index.wxml -->
+<view class="page">
+  <view class="hello">{{i18n.home}}</view>
+  <view class="stats">
+    <w-card><view class="num">{{stats.devices}}</view><view class="lbl">{{i18n.myDevices}}</view></w-card>
+    <w-card><view class="num">{{stats.wos}}</view><view class="lbl">{{i18n.runningOrders}}</view></w-card>
+  </view>
+  <view class="quick-grid">
+    <w-card bind:tap="goBooking"><view class="q">{{i18n.newBooking}}</view></w-card>
+    <w-card bind:tap="goStore"><view class="q">{{i18n.partsMall}}</view></w-card>
+    <w-card bind:tap="goWorkorders"><view class="q">{{i18n.runningOrders}}</view></w-card>
+    <w-card bind:tap="goNotifications"><view class="q">{{i18n.notifications}}</view></w-card>
+  </view>
+</view>

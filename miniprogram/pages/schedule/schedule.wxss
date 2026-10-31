@@ -1,0 +1,40 @@
+/* pages/schedule/schedule.wxss */
+.page { padding: 24rpx; background: #f5f6fa; min-height: 100vh; }
+
+/* 月份切换 */
+.cal-header { display: flex; align-items: center; justify-content: space-between; padding: 16rpx 8rpx 20rpx; }
+.cal-nav { width: 64rpx; height: 64rpx; line-height: 64rpx; text-align: center; font-size: 40rpx; color: #3a7afe; background: #fff; border-radius: 12rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,.06); }
+.cal-title { font-size: 32rpx; font-weight: 600; color: #1f2329; }
+
+/* 星期表头 */
+.cal-week { display: flex; background: #fff; border-radius: 12rpx; padding: 16rpx 8rpx; margin-bottom: 16rpx; }
+.cal-week-cell { flex: 1; text-align: center; font-size: 24rpx; color: #86909c; }
+
+/* 日期网格 */
+.cal-grid { display: flex; flex-wrap: wrap; background: #fff; border-radius: 12rpx; padding: 8rpx; }
+.cal-cell { width: calc(100% / 7 - 12rpx); margin: 6rpx; height: 96rpx; border-radius: 10rpx; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
+.cal-cell.placeholder { background: transparent; }
+.cal-cell.free { background: #f0f9eb; border: 1rpx solid #c2e7b0; }
+.cal-cell.busy { background: #fef0f0; border: 1rpx solid #f5c2c2; }
+.cal-cell.weekend.free { background: #f4f7ff; border-color: #d6e0ff; }
+.cal-cell.today { outline: 2rpx solid #3a7afe; outline-offset: -2rpx; }
+.cal-day { font-size: 26rpx; color: #1f2329; }
+.cal-tag { font-size: 20rpx; margin-top: 4rpx; padding: 0 10rpx; border-radius: 6rpx; line-height: 28rpx; }
+.cal-tag.busy, .busy .cal-tag { color: #e5484d; background: #ffe3e3; }
+.free-tag { color: #2f9e44; background: #d8f5c8; }
+.gray-tag { color: #c0c4cc; background: #f2f3f5; }
+.cal-cell.no-sched .cal-day { color: #c0c4cc; }
+
+/* 图例 */
+.legend { display: flex; justify-content: space-around; padding: 20rpx 0; }
+.legend-item { display: flex; align-items: center; font-size: 22rpx; color: #4e5969; }
+.dot { width: 16rpx; height: 16rpx; border-radius: 50%; margin-right: 8rpx; }
+.free-dot { background: #c2e7b0; }
+.busy-dot { background: #f5c2c2; }
+.today-dot { background: #3a7afe; }
+
+/* 工程师列表 */
+.eng-list { background: #fff; border-radius: 12rpx; padding: 20rpx; margin-top: 16rpx; }
+.eng-title { font-size: 28rpx; font-weight: 600; color: #1f2329; margin-bottom: 12rpx; }
+.eng-item { padding: 18rpx 0; border-bottom: 1rpx solid #f2f3f5; font-size: 26rpx; color: #1f2329; }
+.eng-item:last-child { border-bottom: none; }

@@ -1,0 +1,9 @@
+{
+  "name": "pay",
+  "version": "0.1.0",
+  "description": "微信支付 API v3 云函数（阶段4）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

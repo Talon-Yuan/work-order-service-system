@@ -1,0 +1,7 @@
+/* pages/mine/mine.wxss */
+.page { padding: 24rpx 28rpx; }
+.page-title { font-size: 40rpx; font-weight: 700; color: var(--text); }
+.page-hint { margin-top: 12rpx; font-size: 24rpx; color: var(--text-2); }
+
+.menu-card { display: flex; justify-content: space-between; align-items: center; background: #141B26; border-radius: 16rpx; padding: 28rpx 32rpx; margin-top: 20rpx; color: #E8ECF4; font-size: 30rpx; }
+.arrow { color: #8A93A6; }

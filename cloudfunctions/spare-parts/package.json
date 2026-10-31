@@ -1,0 +1,9 @@
+{
+  "name": "spare-parts",
+  "version": "0.1.0",
+  "description": "备件主数据/批次/序列号/商城公开目录云函数（阶段4）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

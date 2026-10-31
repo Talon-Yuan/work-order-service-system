@@ -1,0 +1,2 @@
+<!-- components/w-toast/w-toast.wxml -->
+<view class="c-toast" wx:if="{visible}">{text}</view>

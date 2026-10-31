@@ -1,0 +1,9 @@
+{
+  "name": "schedule",
+  "version": "0.1.0",
+  "description": "微信售后服务平台 - 排班日历云函数（阶段3：忙/闲日历、冲突检测、创建预约、时区字典）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "openapi": []
+  },
+  "triggers": [
+    {
+      "name": "cronMaintenance",
+      "type": "timer",
+      "config": "0 0 9 * * * *"
+    },
+    {
+      "name": "cronStockAlert",
+      "type": "timer",
+      "config": "0 0 8 * * * *"
+    },
+    {
+      "name": "cronPayReconcile",
+      "type": "timer",
+      "config": "0 30 3 * * * *"
+    },
+    {
+      "name": "cronReportCleanup",
+      "type": "timer",
+      "config": "0 0 4 * * * *"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "knowledge",
+  "version": "1.0.0",
+  "description": "阶段8-3 知识库文章：两级可见隔离（public/internal）+ 增删改查 + 工单沉淀案例（审计+越权防护）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

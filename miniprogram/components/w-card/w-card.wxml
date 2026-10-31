@@ -1,0 +1,2 @@
+<!-- components/w-card/w-card.wxml -->
+<view class="c-card" wx:if="{visible}">{text}</view>

@@ -1,0 +1,45 @@
+<!-- pages/logistics/logistics.wxml -->
+<view class="page">
+  <view class="page-title">{i18n.logisticsTitle}</view>
+
+  <view wx:if="{{detail}}">
+    <view class="detail-head">
+      <text class="back" bind:tap="onBack">‹ {i18n.back}</text>
+      <text class="lg-status">{{detail.status_label}}</text>
+    </view>
+    <view class="w-card">
+      <view class="lg-row"><text class="lg-label">{i18n.logisticsNo}</text><text>{{detail.tracking_no}}</text></view>
+      <view class="lg-row"><text class="lg-label">{i18n.logisticsCarrier}</text><text>{{detail.carrier}}</text></view>
+      <view class="lg-row" wx:if="{{detail.order_no}}"><text class="lg-label">{i18n.orderNo}</text><text>{{detail.order_no}}</text></view>
+      <view class="lg-sub-row" wx:if="{{detail.subscribed}}"><text>{i18n.subscribeGranted}</text></view>
+      <w-button wx:if="{{!detail.subscribed}}" text="{i18n.logisticsSubscribe}" bind:tap="onSubscribe" />
+    </view>
+    <view class="w-card">
+      <view class="card-title">{i18n.logisticsDynamic}</view>
+      <view wx:if="{{detailLoading}}" class="page-hint">{i18n.loading}</view>
+      <view wx:elif="{{traces.length === 0}}" class="page-hint">{i18n.logisticsTraceEmpty}</view>
+      <view wx:else>
+        <view class="trace-item" wx:for="{{traces}}" wx:key="index">
+          <view class="trace-dot {{index === 0 ? 'active' : ''}}"></view>
+          <view class="trace-body">
+            <text class="trace-desc">{{item.desc}}</text>
+            <text class="trace-time">{{item.time}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else>
+    <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
+    <view wx:elif="{{list.length === 0}}" class="page-hint">{i18n.empty}</view>
+    <view wx:else>
+      <view class="w-card lg-card" wx:for="{{list}}" wx:key="_id" bind:tap="onSelect" data-id="{{item._id}}">
+        <view class="lg-row"><text class="lg-label">{i18n.logisticsNo}</text><text>{{item.tracking_no}}</text></view>
+        <view class="lg-row"><text class="lg-label">{i18n.logisticsCarrier}</text><text>{{item.carrier}}</text></view>
+        <view class="lg-row"><text class="lg-label">{i18n.logisticsStatus}</text><text class="lg-status">{{item.status_label}}</text></view>
+        <view class="lg-row" wx:if="{{item.order_no}}"><text class="lg-label">{i18n.orderNo}</text><text>{{item.order_no}}</text></view>
+      </view>
+    </view>
+  </view>
+</view>

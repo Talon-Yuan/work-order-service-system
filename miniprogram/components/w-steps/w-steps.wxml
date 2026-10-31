@@ -1,0 +1,1 @@
+<view class="c-steps"><view wx:for="{{items}}" wx:key="index" class="step {{item.active ? 'active' : ''}}">{{item.label}}</view></view>
