@@ -42,7 +42,7 @@ async function overview(event) {
     // —— 工单 KPI（按状态分组，一次拉取内存聚合） ——
     const woRes = await db.collection(COLLECTIONS.WORK_ORDERS)
       .where(Object.assign({}, rowFilter, { created_at: _.gte(start) }))
-      .field({ status: true, total_cost_fen: true })
+      .field({ status: true, total_cost_fen: true, device_id: true })
       .limit(1000).get();
     const woList = woRes.data || [];
     const woByStatus = {};
@@ -115,11 +115,19 @@ async function overview(event) {
       };
     }
 
+    // 首页统计补充：进行中工单（施工中+待验收）与报修设备数（窗口内去重，忽略空 device_id）
+    const deviceSet = new Set();
+    woList.forEach((w) => { if (w.device_id) deviceSet.add(w.device_id); });
+    const wos = (woByStatus[WO_STATUS.PROCESSING] || 0) + (woByStatus[WO_STATUS.PENDING_ACCEPTANCE] || 0);
+    const devices = deviceSet.size;
+
     return ok({
       kpi,
       trend: trend.arr,
       role,
-      generated_at: now.toISOString()
+      generated_at: now.toISOString(),
+      devices,
+      wos
     });
   } catch (e) {
     console.error('[dashboard] overview error:', e);

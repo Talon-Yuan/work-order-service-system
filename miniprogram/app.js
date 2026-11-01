@@ -10,7 +10,7 @@ App({
   globalData: {
     lang: 'zh-CN',
     session: null,           // 由 login 云函数返回的会话标识（仅用于 UI 状态）
-    envId: '',               // 云开发环境 ID：部署时在 project.config.json / env 中注入，不入库明文
+    envId: 'cloud-survice-d6gwxx7i906fb6b20',  // 云开发环境 ID（方案A：miniprogram-ci 上传体验版）
     openid: null,            // 由云函数服务端获取后回填，前端不自行断言
     userInfo: null
   },

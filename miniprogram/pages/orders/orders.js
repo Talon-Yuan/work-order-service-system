@@ -33,13 +33,27 @@ Page({
     callFunction('order', { action: 'order.list', page: 1, page_size: 20 }).then((r) => {
       this.setData({ loading: false });
       if (r && r.code === 0) {
-        const orders = (r.data.list || []).map((o) => ({
-          ...o,
-          total_yuan: ((o.total_fen || 0) / 100).toFixed(2),
-          status_label: t(STATUS_KEY[o.status] || 'orderPending'),
-          invoice_label: t(INVOICE_KEY[o.invoice_status] || 'notInvoiced')
-        }));
-        this.setData({ orders });
+        const orderRows = [];
+        (r.data.list || []).forEach((o) => {
+          const items = (o.items && o.items.length) ? o.items : [{ part_name: '-', quantity: 0, price_fen: 0 }];
+          items.forEach((it, i) => {
+            orderRows.push({
+              row_key: o._id + '-' + i,
+              _id: o._id,
+              order_no: o.order_no,
+              status: o.status,
+              status_label: t(STATUS_KEY[o.status] || 'orderPending'),
+              invoice_label: t(INVOICE_KEY[o.invoice_status] || 'notInvoiced'),
+              invoice_status: o.invoice_status,
+              total_yuan: ((o.total_fen || 0) / 100).toFixed(2),
+              is_first: i === 0,
+              part_name: it.part_name,
+              quantity: it.quantity,
+              amount_yuan: ((it.price_fen || 0) * (it.quantity || 0) / 100).toFixed(2)
+            });
+          });
+        });
+        this.setData({ orders: orderRows });
       }
     });
   },

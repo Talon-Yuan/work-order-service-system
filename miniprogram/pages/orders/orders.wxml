@@ -1,31 +1,31 @@
 <!-- pages/orders/orders.wxml -->
 <view class="page">
-  <view class="page-title">{i18n.myOrders}</view>
-  <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
-  <view wx:elif="{{orders.length === 0}}" class="page-hint">{i18n.empty}</view>
+  <view class="page-title">{{i18n.myOrders}}</view>
+  <view wx:if="{{loading}}" class="page-hint">{{i18n.loading}}</view>
+  <view wx:elif="{{orders.length == 0}}" class="page-hint">{{i18n.empty}}</view>
   <view wx:else>
-    <view class="order-card" wx:for="{{orders}}" wx:key="_id">
-      <view class="order-head">
+    <view class="order-card" wx:for="{{orders}}" wx:key="row_key">
+      <view class="order-head" wx:if="{{item.is_first}}">
         <text class="order-no">{{item.order_no}}</text>
         <text class="order-status">{{item.status_label}}</text>
       </view>
-      <view class="order-item" wx:for="{{item.items}}" wx:for-item="it" wx:key="part_id">
-        <text>{{it.part_name}} × {{it.quantity}}</text>
-        <text>¥{{(it.price_fen * it.quantity / 100).toFixed(2)}}</text>
+      <view class="order-item">
+        <text>{{item.part_name}} × {{item.quantity}}</text>
+        <text>¥{{item.amount_yuan}}</text>
       </view>
-      <view class="order-foot">
-        <text>{i18n.invoiceStatus}：{{item.invoice_label}}</text>
+      <view class="order-foot" wx:if="{{item.is_first}}">
+        <text>{{i18n.invoiceStatus}}：{{item.invoice_label}}</text>
         <text class="order-total">¥{{item.total_yuan}}</text>
       </view>
-      <view class="order-actions" wx:if="{{item.status === 'pending'}}">
-        <w-button text="{i18n.payNow}" bind:tap="onPay" data-id="{{item._id}}" />
+      <view class="order-actions" wx:if="{{item.is_first && item.status == 'pending'}}">
+        <w-button text="{{i18n.payNow}}" bind:tap="onPay" data-id="{{item._id}}" />
       </view>
-      <view class="order-actions" wx:elif="{{item.status === 'shipped'}}">
-        <w-button text="{i18n.logisticsViewDetail}" bind:tap="onLogistics" data-id="{{item._id}}" />
-        <w-button text="{i18n.confirmReceive}" bind:tap="onComplete" data-id="{{item._id}}" />
+      <view class="order-actions" wx:elif="{{item.is_first && item.status == 'shipped'}}">
+        <w-button text="{{i18n.logisticsViewDetail}}" bind:tap="onLogistics" data-id="{{item._id}}" />
+        <w-button text="{{i18n.confirmReceive}}" bind:tap="onComplete" data-id="{{item._id}}" />
       </view>
-      <view class="order-actions" wx:elif="{{item.status === 'paid' && item.invoice_status === 'not_invoiced'}}">
-        <w-button text="{i18n.invoiceRequest}" bind:tap="onInvoice" data-id="{{item._id}}" />
+      <view class="order-actions" wx:elif="{{item.is_first && item.status == 'paid' && item.invoice_status == 'not_invoiced'}}">
+        <w-button text="{{i18n.invoiceRequest}}" bind:tap="onInvoice" data-id="{{item._id}}" />
       </view>
     </view>
   </view>

@@ -38,19 +38,19 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "home"
+        "text": "首页"
       },
       {
         "pagePath": "pages/workorders/workorders",
-        "text": "workorder"
+        "text": "工单"
       },
       {
         "pagePath": "pages/store/store",
-        "text": "store"
+        "text": "商城"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "mine"
+        "text": "我的"
       }
     ]
   },

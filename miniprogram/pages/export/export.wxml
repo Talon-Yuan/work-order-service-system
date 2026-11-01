@@ -1,25 +1,25 @@
 <!-- pages/export/export.wxml — 报表导出（阶段7-3） -->
 <view class="page">
-  <view class="page-title">{i18n.exportTitle}</view>
-  <view class="page-hint">{i18n.exportDynamic}</view>
+  <view class="page-title">{{i18n.exportTitle}}</view>
+  <view class="page-hint">{{i18n.exportDynamic}}</view>
 
   <!-- 导出条件 -->
   <view class="w-card">
-    <view class="card-title">{i18n.exportType}</view>
+    <view class="card-title">{{i18n.exportType}}</view>
     <view class="type-row">
       <text wx:for="{{types}}" wx:key="key" data-type="{{item.key}}" bind:tap="onPickType"
             class="type-chip {{currentType === item.key ? 'active' : ''}}">{{item.label}}</text>
     </view>
     <view class="form-row">
-      <text class="form-label">{i18n.exportStart}</text>
-      <input class="form-input" type="date" value="{{start}}" bindinput="onStart" placeholder="{i18n.exportDatePlaceholder}" />
+      <text class="form-label">{{i18n.exportStart}}</text>
+      <input class="form-input" type="date" value="{{start}}" bindinput="onStart" placeholder="{{i18n.exportDatePlaceholder}}" />
     </view>
     <view class="form-row">
-      <text class="form-label">{i18n.exportEnd}</text>
-      <input class="form-input" type="date" value="{{end}}" bindinput="onEnd" placeholder="{i18n.exportDatePlaceholder}" />
+      <text class="form-label">{{i18n.exportEnd}}</text>
+      <input class="form-input" type="date" value="{{end}}" bindinput="onEnd" placeholder="{{i18n.exportDatePlaceholder}}" />
     </view>
     <view class="form-row">
-      <text class="form-label">{i18n.exportStatusFilter}</text>
+      <text class="form-label">{{i18n.exportStatusFilter}}</text>
       <input class="form-input" value="{{status}}" bindinput="onStatus" placeholder="pending/processing/closed" />
     </view>
     <w-button text="{{creating ? i18n.exportCreating : i18n.exportCreate}}" bind:tap="onCreate" />
@@ -27,14 +27,14 @@
 
   <!-- 导出记录 -->
   <view class="w-card">
-    <view class="card-title">{i18n.exportHistory}</view>
-    <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
-    <view wx:elif="{{list.length === 0}}" class="page-hint">{i18n.exportNoData}</view>
+    <view class="card-title">{{i18n.exportHistory}}</view>
+    <view wx:if="{{loading}}" class="page-hint">{{i18n.loading}}</view>
+    <view wx:elif="{{list.length === 0}}" class="page-hint">{{i18n.exportNoData}}</view>
     <view wx:else>
       <view class="rec-row" wx:for="{{list}}" wx:key="export_id">
         <view class="rec-main">
           <text class="rec-no">{{item.export_no}}</text>
-          <text class="rec-sub">{{item.type_label}} · {i18n.exportRows} {{item.rows}} · {i18n.exportExpireAt} {{item.expire_text}}</text>
+          <text class="rec-sub">{{item.type_label}} · {{i18n.exportRows}} {{item.rows}} · {{i18n.exportExpireAt}} {{item.expire_text}}</text>
         </view>
         <text class="rec-link" data-id="{{item.export_id}}" bind:tap="onGetLink">{{item.expired ? i18n.exportExpired : i18n.exportGetLink}}</text>
       </view>

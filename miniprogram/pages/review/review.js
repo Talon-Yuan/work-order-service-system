@@ -26,7 +26,7 @@ Page({
 
   onLoad() {
     apply(this, REVIEW_KEYS);
-    this.setData({ tagOptions: TAG_KEYS.map((x) => ({ key: x.key, label: t(x.label) })) });
+    this.setData({ tagOptions: TAG_KEYS.map((x) => ({ key: x.key, label: t(x.label), on: false })) });
   },
   onShow() {
     apply(this, REVIEW_KEYS);
@@ -49,7 +49,10 @@ Page({
     callFunction('evaluation', { action: 'eval.list', page: 1, page_size: 20 }).then((r) => {
       this.setData({ loading: false });
       if (r && r.code === 0) {
-        this.setData({ list: r.data.list || [], total: r.data.total || 0 });
+        const list = (r.data.list || []).map((it) => Object.assign({}, it, {
+          tags_text: (it.tags || []).join('、')
+        }));
+        this.setData({ list, total: r.data.total || 0 });
       }
     });
   },
@@ -61,7 +64,8 @@ Page({
     const tags = this.data.tags.slice();
     const i = tags.indexOf(key);
     if (i >= 0) tags.splice(i, 1); else tags.push(key);
-    this.setData({ tags });
+    const tagOptions = this.data.tagOptions.map((x) => Object.assign({}, x, { on: tags.indexOf(x.key) >= 0 }));
+    this.setData({ tags, tagOptions });
   },
   onContent(e) { this.setData({ content: e.detail.value }); },
 
@@ -83,7 +87,7 @@ Page({
       this.setData({ submitting: false });
       if (r && r.code === 0) {
         wx.showToast({ title: t('reviewSubmitSuccess'), icon: 'success' });
-        this.setData({ woId: '', rating: 5, tags: [], content: '' });
+        this.setData({ woId: '', rating: 5, tags: [], content: '', tagOptions: this.data.tagOptions.map((x) => Object.assign({}, x, { on: false })) });
         this.loadList();
         this.loadStats();
       }

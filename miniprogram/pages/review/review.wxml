@@ -1,18 +1,18 @@
 <!-- pages/review/review.wxml — 服务评价（阶段8-2） -->
 <view class="page">
-  <view class="page-title">{i18n.reviewTitle}</view>
-  <view class="page-hint">{i18n.reviewDynamic}</view>
+  <view class="page-title">{{i18n.reviewTitle}}</view>
+  <view class="page-hint">{{i18n.reviewDynamic}}</view>
 
   <!-- 满意度统计（内部角色可见） -->
   <view class="stats-card" wx:if="{{showStats && stats}}">
     <view class="stats-row">
       <view class="stat-item">
         <text class="stat-num">{{stats.avg_rating}}</text>
-        <text class="stat-label">{i18n.reviewAvg}</text>
+        <text class="stat-label">{{i18n.reviewAvg}}</text>
       </view>
       <view class="stat-item">
         <text class="stat-num">{{stats.total}}</text>
-        <text class="stat-label">{i18n.reviewTotal}</text>
+        <text class="stat-label">{{i18n.reviewTotal}}</text>
       </view>
     </view>
     <view class="stats-dist" wx:for="{{[5,4,3,2,1]}}" wx:key="*this">
@@ -25,11 +25,11 @@
   <!-- 评价提交 -->
   <view class="form-card">
     <view class="field">
-      <text class="field-label">{i18n.reviewWoId}</text>
-      <input class="field-input" value="{{woId}}" bindinput="onWoId" placeholder="{i18n.reviewWoIdPlaceholder}" />
+      <text class="field-label">{{i18n.reviewWoId}}</text>
+      <input class="field-input" value="{{woId}}" bindinput="onWoId" placeholder="{{i18n.reviewWoIdPlaceholder}}" />
     </view>
     <view class="field">
-      <text class="field-label">{i18n.reviewRating}</text>
+      <text class="field-label">{{i18n.reviewRating}}</text>
       <view class="stars">
         <text wx:for="{{[1,2,3,4,5]}}" wx:key="*this"
           class="star {{rating >= item ? 'star-on' : ''}}"
@@ -37,32 +37,32 @@
       </view>
     </view>
     <view class="field">
-      <text class="field-label">{i18n.reviewTags}</text>
+      <text class="field-label">{{i18n.reviewTags}}</text>
       <view class="tags">
         <text wx:for="{{tagOptions}}" wx:key="key"
-          class="tag {{tags.indexOf(item.key) >= 0 ? 'tag-on' : ''}}"
+          class="tag {{item.on ? 'tag-on' : ''}}"
           data-key="{{item.key}}" bind:tap="onTag">{{item.label}}</text>
       </view>
     </view>
     <view class="field">
-      <text class="field-label">{i18n.reviewContent}</text>
+      <text class="field-label">{{i18n.reviewContent}}</text>
       <textarea class="field-area" value="{{content}}" bindinput="onContent"
-        placeholder="{i18n.reviewContentPlaceholder}" maxlength="500" />
+        placeholder="{{i18n.reviewContentPlaceholder}}" maxlength="500" />
     </view>
-    <view class="form-hint">{i18n.reviewEvalOnce} · {i18n.reviewNoEvalYet}</view>
-    <w-button text="{i18n.reviewSubmit}" bind:tap="onSubmit" />
+    <view class="form-hint">{{i18n.reviewEvalOnce}} · {{i18n.reviewNoEvalYet}}</view>
+    <w-button text="{{i18n.reviewSubmit}}" bind:tap="onSubmit" />
   </view>
 
   <!-- 评价记录 -->
-  <view class="list-title">{i18n.reviewList}（{{total}}）</view>
-  <view class="empty" wx:if="{{!loading && list.length === 0}}">{i18n.reviewEmpty}</view>
+  <view class="list-title">{{i18n.reviewList}}（{{total}}）</view>
+  <view class="empty" wx:if="{{!loading && list.length == 0}}">{{i18n.reviewEmpty}}</view>
   <view class="eval-card" wx:for="{{list}}" wx:key="_id">
     <view class="eval-head">
       <text class="eval-rating">{{item.rating}}★</text>
       <text class="eval-time">{{item.created_at}}</text>
     </view>
-    <view class="eval-tags" wx:if="{{item.tags.length}}">
-      <text class="mini-tag" wx:for="{{item.tags}}" wx:for-item="tg" wx:key="*this">{{tg}}</text>
+    <view class="eval-tags" wx:if="{{item.tags_text}}">
+      <text class="mini-tag">{{item.tags_text}}</text>
     </view>
     <view class="eval-content" wx:if="{{item.content}}">{{item.content}}</view>
   </view>

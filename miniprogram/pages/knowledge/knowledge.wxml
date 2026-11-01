@@ -1,12 +1,12 @@
 <!-- pages/knowledge/knowledge.wxml — 知识库（阶段8-3） -->
 <view class="page">
-  <view class="page-title">{i18n.knowledgeTitle}</view>
-  <view class="page-hint">{i18n.knowledgeDynamic}</view>
+  <view class="page-title">{{i18n.knowledgeTitle}}</view>
+  <view class="page-hint">{{i18n.knowledgeDynamic}}</view>
 
   <!-- 搜索与分类 -->
   <view class="search-row">
-    <input class="search-input" value="{{keyword}}" bindinput="onKeyword" placeholder="{i18n.kbSearchPlaceholder}" confirm-type="search" bindconfirm="onSearch" />
-    <view class="search-btn" bind:tap="onSearch">{i18n.search}</view>
+    <input class="search-input" value="{{keyword}}" bindinput="onKeyword" placeholder="{{i18n.kbSearchPlaceholder}}" confirm-type="search" bindconfirm="onSearch" />
+    <view class="search-btn" bind:tap="onSearch">{{i18n.search}}</view>
   </view>
   <scroll-view class="cats" scroll-x>
     <view wx:for="{{cats}}" wx:key="key"
@@ -22,15 +22,15 @@
         <text class="form-close" bind:tap="onCloseForm">✕</text>
       </view>
       <view class="field" wx:if="{{fromWo}}">
-        <text class="field-label">{i18n.kbFromWo}</text>
-        <input class="field-input" value="{{woId}}" bindinput="onWoId" placeholder="{i18n.kbFromWoPlaceholder}" />
+        <text class="field-label">{{i18n.kbFromWo}}</text>
+        <input class="field-input" value="{{woId}}" bindinput="onWoId" placeholder="{{i18n.kbFromWoPlaceholder}}" />
       </view>
       <view class="field">
-        <text class="field-label">{i18n.kbCreateTitle}</text>
+        <text class="field-label">{{i18n.kbCreateTitle}}</text>
         <input class="field-input" value="{{form.title}}" bindinput="onFTitle" maxlength="120" />
       </view>
       <view class="field">
-        <text class="field-label">{i18n.kbCategory}</text>
+        <text class="field-label">{{i18n.kbCategory}}</text>
         <view class="chips">
           <text wx:for="{{catOptions}}" wx:key="key"
             class="chip {{form.category === item.key ? 'chip-on' : ''}}"
@@ -38,7 +38,7 @@
         </view>
       </view>
       <view class="field" wx:if="{{!fromWo}}">
-        <text class="field-label">{i18n.kbVisibility}</text>
+        <text class="field-label">{{i18n.kbVisibility}}</text>
         <view class="chips">
           <text wx:for="{{visOptions}}" wx:key="key"
             class="chip {{form.visibility === item.key ? 'chip-on' : ''}}"
@@ -46,7 +46,7 @@
         </view>
       </view>
       <view class="field" wx:if="{{!fromWo}}">
-        <text class="field-label">{i18n.kbStatus}</text>
+        <text class="field-label">{{i18n.kbStatus}}</text>
         <view class="chips">
           <text wx:for="{{statusOptions}}" wx:key="key"
             class="chip {{form.status === item.key ? 'chip-on' : ''}}"
@@ -54,22 +54,22 @@
         </view>
       </view>
       <view class="field" wx:if="{{!fromWo}}">
-        <text class="field-label">{i18n.kbContent}</text>
+        <text class="field-label">{{i18n.kbContent}}</text>
         <textarea class="field-area" value="{{form.content}}" bindinput="onFContent" maxlength="8000" />
       </view>
       <view class="form-actions">
-        <w-button text="{i18n.kbSave}" bind:tap="{{fromWo ? 'onFromWoSubmit' : 'onSave'}}" />
+        <w-button text="{{i18n.kbSave}}" bind:tap="{{fromWo ? 'onFromWoSubmit' : 'onSave'}}" />
       </view>
     </view>
   </view>
 
   <view class="admin-bar">
-    <view class="admin-btn" bind:tap="onCreate">{i18n.kbCreate}</view>
-    <view class="admin-btn" bind:tap="onFromWo">{i18n.kbFromWo}</view>
+    <view class="admin-btn" bind:tap="onCreate">{{i18n.kbCreate}}</view>
+    <view class="admin-btn" bind:tap="onFromWo">{{i18n.kbFromWo}}</view>
   </view>
 
   <!-- 列表 -->
-  <view class="empty" wx:if="{{!loading && list.length === 0}}">{i18n.empty}</view>
+  <view class="empty" wx:if="{{!loading && list.length === 0}}">{{i18n.empty}}</view>
   <view class="kb-card" wx:for="{{list}}" wx:key="_id" data-id="{{item._id}}" bind:tap="onOpenDetail">
     <view class="kb-head">
       <text class="kb-title">{{item.title}}</text>
@@ -77,7 +77,7 @@
     </view>
     <view class="kb-meta">
       <text class="kb-cat">{{item.cat_label}}</text>
-      <text class="kb-time">{i18n.kbViewCount} {{item.view_count}} · {{item.updated_text}}</text>
+      <text class="kb-time">{{i18n.kbViewCount}} {{item.view_count}} · {{item.updated_text}}</text>
     </view>
     <view class="kb-ops" catch:tap="noop" wx:if="{{false}}"></view>
   </view>

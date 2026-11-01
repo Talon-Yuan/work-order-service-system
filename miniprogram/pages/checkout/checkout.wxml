@@ -1,17 +1,17 @@
 <!-- pages/checkout/checkout.wxml -->
 <view class="page">
-  <view class="page-title">{i18n.checkout}</view>
-  <view wx:if="{{items.length === 0}}" class="page-hint">{i18n.cartEmpty}</view>
+  <view class="page-title">{{i18n.checkout}}</view>
+  <view wx:if="{{items.length === 0}}" class="page-hint">{{i18n.cartEmpty}}</view>
   <view wx:else>
     <view class="item-card" wx:for="{{items}}" wx:key="part_id">
       <view class="item-name">{{item.part_name}}</view>
-      <view class="item-meta">{{item.part_no}} · {i18n.quantity} {{item.quantity}}</view>
+      <view class="item-meta">{{item.part_no}} · {{i18n.quantity}} {{item.quantity}}</view>
       <view class="item-price">¥{{item.subtotal_yuan}}</view>
     </view>
     <view class="total-row">
-      <text>{i18n.totalAmount}</text>
+      <text>{{i18n.totalAmount}}</text>
       <text class="total-price">¥{{total_yuan}}</text>
     </view>
-    <w-button text="{i18n.checkoutSubmit}" bind:tap="onSubmit" />
+    <w-button text="{{i18n.checkoutSubmit}}" bind:tap="onSubmit" />
   </view>
 </view>

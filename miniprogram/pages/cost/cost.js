@@ -29,8 +29,16 @@ Page({
       this.setData({ loading: false });
       if (stats && stats.code === 0) {
         const s = stats.data;
+        const sum = s.summary || {};
         this.setData({
-          summary: s.summary,
+          summary: {
+            total_cost_yuan: ((sum.total_cost_fen || 0) / 100).toFixed(2),
+            avg_cost_yuan: ((sum.avg_cost_fen || 0) / 100).toFixed(2),
+            parts_cost_yuan: ((sum.parts_cost_fen || 0) / 100).toFixed(2),
+            labor_fee_yuan: ((sum.labor_fee_fen || 0) / 100).toFixed(2),
+            transport_fee_yuan: ((sum.transport_fee_fen || 0) / 100).toFixed(2),
+            work_order_count: sum.work_order_count
+          },
           trend: (s.trend || []).map((x) => ({ ...x, total_yuan: (x.total_cost_fen / 100).toFixed(2) })),
           composition: (s.composition || []).map((c) => ({ ...c, yuan: (c.fen / 100).toFixed(2) })),
           top: (s.top || []).map((x) => ({ ...x, cost_yuan: (x.total_cost_fen / 100).toFixed(2) })),

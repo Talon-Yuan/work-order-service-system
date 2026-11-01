@@ -1,7 +1,7 @@
 <!-- pages/knowledge-detail/knowledge-detail.wxml — 知识详情（阶段8-3） -->
 <view class="page">
   <view class="back-row" bind:tap="onBack">
-    <text class="back-arrow">‹</text><text class="back-text">{i18n.kbBack}</text>
+    <text class="back-arrow">‹</text><text class="back-text">{{i18n.kbBack}}</text>
   </view>
 
   <block wx:if="{{article}}">
@@ -12,16 +12,16 @@
       </view>
       <view class="d-meta">
         <text class="d-cat">{{article.cat_label}} · {{article.status_label}}</text>
-        <text class="d-time">{i18n.kbViewCount} {{article.view_count}}</text>
+        <text class="d-time">{{i18n.kbViewCount}} {{article.view_count}}</text>
       </view>
       <view class="d-meta" wx:if="{{article.published_text}}">
-        <text class="d-time">{i18n.kbPublishedAt} {{article.published_text}}</text>
+        <text class="d-time">{{i18n.kbPublishedAt}} {{article.published_text}}</text>
       </view>
-      <view class="internal-hint" wx:if="{{article.visibility === 'internal'}}">{i18n.kbInternalOnly}</view>
+      <view class="internal-hint" wx:if="{{article.visibility === 'internal'}}">{{i18n.kbInternalOnly}}</view>
       <view class="d-content">{{article.content}}</view>
       <view class="d-ops">
-        <view class="op-btn" bind:tap="onEdit">{i18n.kbEdit}</view>
-        <view class="op-btn op-danger" bind:tap="onDelete">{i18n.kbDelete}</view>
+        <view class="op-btn" bind:tap="onEdit">{{i18n.kbEdit}}</view>
+        <view class="op-btn op-danger" bind:tap="onDelete">{{i18n.kbDelete}}</view>
       </view>
     </view>
   </block>
@@ -29,11 +29,11 @@
   <!-- 编辑面板 -->
   <view class="form-card" wx:if="{{editing}}">
     <view class="field">
-      <text class="field-label">{i18n.kbCreateTitle}</text>
+      <text class="field-label">{{i18n.kbCreateTitle}}</text>
       <input class="field-input" value="{{form.title}}" bindinput="onFTitle" maxlength="120" />
     </view>
     <view class="field">
-      <text class="field-label">{i18n.kbCategory}</text>
+      <text class="field-label">{{i18n.kbCategory}}</text>
       <view class="chips">
         <text wx:for="{{catOptions}}" wx:key="key"
           class="chip {{form.category === item.key ? 'chip-on' : ''}}"
@@ -41,7 +41,7 @@
       </view>
     </view>
     <view class="field">
-      <text class="field-label">{i18n.kbVisibility}</text>
+      <text class="field-label">{{i18n.kbVisibility}}</text>
       <view class="chips">
         <text wx:for="{{visOptions}}" wx:key="key"
           class="chip {{form.visibility === item.key ? 'chip-on' : ''}}"
@@ -49,7 +49,7 @@
       </view>
     </view>
     <view class="field">
-      <text class="field-label">{i18n.kbStatus}</text>
+      <text class="field-label">{{i18n.kbStatus}}</text>
       <view class="chips">
         <text wx:for="{{statusOptions}}" wx:key="key"
           class="chip {{form.status === item.key ? 'chip-on' : ''}}"
@@ -57,12 +57,12 @@
       </view>
     </view>
     <view class="field">
-      <text class="field-label">{i18n.kbContent}</text>
+      <text class="field-label">{{i18n.kbContent}}</text>
       <textarea class="field-area" value="{{form.content}}" bindinput="onFContent" maxlength="8000" />
     </view>
     <view class="form-actions">
-      <w-button text="{i18n.kbSave}" bind:tap="onSave" />
-      <view class="op-btn op-plain" bind:tap="onCancelEdit">{i18n.cancel}</view>
+      <w-button text="{{i18n.kbSave}}" bind:tap="onSave" />
+      <view class="op-btn op-plain" bind:tap="onCancelEdit">{{i18n.cancel}}</view>
     </view>
   </view>
 </view>

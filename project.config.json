@@ -1,0 +1,29 @@
+{
+  "appid": "wx1bd7a58e85b5df05",
+  "compileType": "miniprogram",
+  "libVersion": "3.7.1",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "projectname": "work-order-service-system",
+  "description": "微信售后服务平台（金属3D打印售后）",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true,
+    "coverView": true,
+    "ignoreUploadUnusedFiles": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "packOptions": {
+    "include": [
+      "miniprogram/utils/lang/"
+    ]
+  },
+  "condition": {}
+}

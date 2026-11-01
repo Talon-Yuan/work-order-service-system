@@ -32,6 +32,13 @@ Page({
       if (r && r.code === 0) {
         const d = r.data;
         const internal = d.role !== 'customer';
+        const kpi = d.kpi || {};
+        const cost = kpi.cost || {};
+        const kpiView = Object.assign({}, kpi, {
+          cost: Object.assign({}, cost, {
+            avg_yuan: cost.avg_fen > 0 ? (cost.avg_fen / 100).toFixed(2) : '0.00'
+          })
+        });
         const byStatus = (d.kpi.work_orders.by_status) || {};
         const statusList = Object.keys(byStatus).map((k) => ({
           key: k, label: t(STATUS_KEY[k] || k), count: byStatus[k] || 0
@@ -39,9 +46,9 @@ Page({
         const trendAll = d.trend || [];
         const trend = trendAll.slice(-14).map((x) => ({
           date: x.date.slice(5), work_orders: x.work_orders,
-          appointments: x.appointments, cost_fen: x.cost_fen
+          appointments: x.appointments, cost_fen: x.cost_fen, cost_yuan: (x.cost_fen / 100).toFixed(0)
         }));
-        this.setData({ kpi: d.kpi, statusList, trend, role: d.role, internal });
+        this.setData({ kpi: kpiView, statusList, trend, role: d.role, internal });
       }
     });
   },

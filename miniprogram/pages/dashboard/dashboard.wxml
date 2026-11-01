@@ -1,38 +1,38 @@
 <!-- pages/dashboard/dashboard.wxml — 数据看板（阶段7-1） -->
 <view class="page">
-  <view class="page-title">{i18n.dashboardTitle}</view>
-  <view class="page-hint">{i18n.dashboardDynamic}</view>
+  <view class="page-title">{{i18n.dashboardTitle}}</view>
+  <view class="page-hint">{{i18n.dashboardDynamic}}</view>
 
-  <view wx:if="{{loading}}" class="page-hint">{i18n.loading}</view>
-  <view wx:elif="{{!kpi}}" class="page-hint">{i18n.empty}</view>
+  <view wx:if="{{loading}}" class="page-hint">{{i18n.loading}}</view>
+  <view wx:elif="{{!kpi}}" class="page-hint">{{i18n.empty}}</view>
   <view wx:else>
     <!-- KPI 卡片 -->
     <view class="kpi-grid">
       <view class="kpi-card">
         <text class="kpi-num">{{kpi.work_orders.total}}</text>
-        <text class="kpi-label">{i18n.dashboardWorkOrders}</text>
+        <text class="kpi-label">{{i18n.dashboardWorkOrders}}</text>
       </view>
       <view class="kpi-card">
         <text class="kpi-num">{{kpi.appointments.total}}</text>
-        <text class="kpi-label">{i18n.dashboardAppointments}</text>
+        <text class="kpi-label">{{i18n.dashboardAppointments}}</text>
       </view>
       <view class="kpi-card" wx:if="{{internal}}">
         <text class="kpi-num">{{kpi.appointments.pending}}</text>
-        <text class="kpi-label">{i18n.dashboardPending}</text>
+        <text class="kpi-label">{{i18n.dashboardPending}}</text>
       </view>
       <view class="kpi-card" wx:if="{{internal}}">
         <text class="kpi-num">{{kpi.low_stock}}</text>
-        <text class="kpi-label">{i18n.dashboardLowStock}</text>
+        <text class="kpi-label">{{i18n.dashboardLowStock}}</text>
       </view>
       <view class="kpi-card" wx:if="{{internal}}">
-        <text class="kpi-num">{{kpi.cost.avg_fen > 0 ? (kpi.cost.avg_fen / 100).toFixed(2) : '0.00'}}</text>
-        <text class="kpi-label">{i18n.dashboardAvg}</text>
+        <text class="kpi-num">{{kpi.cost.avg_yuan}}</text>
+        <text class="kpi-label">{{i18n.dashboardAvg}}</text>
       </view>
     </view>
 
     <!-- 工单状态分布 -->
     <view class="w-card">
-      <view class="card-title">{i18n.dashboardByStatus}</view>
+      <view class="card-title">{{i18n.dashboardByStatus}}</view>
       <view class="status-row" wx:for="{{statusList}}" wx:key="key">
         <text class="status-label">{{item.label}}</text>
         <text class="status-count">{{item.count}}</text>
@@ -41,27 +41,27 @@
 
     <!-- 近14天趋势 -->
     <view class="w-card">
-      <view class="card-title">{i18n.dashboardTrend}</view>
+      <view class="card-title">{{i18n.dashboardTrend}}</view>
       <view class="trend-row head">
         <text class="trend-date">date</text>
-        <text class="trend-cell">{i18n.dashboardWorkOrders}</text>
-        <text class="trend-cell">{i18n.dashboardAppointments}</text>
+        <text class="trend-cell">{{i18n.dashboardWorkOrders}}</text>
+        <text class="trend-cell">{{i18n.dashboardAppointments}}</text>
         <text class="trend-cell" wx:if="{{internal}}">¥</text>
       </view>
       <view class="trend-row" wx:for="{{trend}}" wx:key="date">
         <text class="trend-date">{{item.date}}</text>
         <text class="trend-cell">{{item.work_orders}}</text>
         <text class="trend-cell">{{item.appointments}}</text>
-        <text class="trend-cell" wx:if="{{internal}}">{{(item.cost_fen / 100).toFixed(0)}}</text>
+        <text class="trend-cell" wx:if="{{internal}}">{{item.cost_yuan}}</text>
       </view>
     </view>
 
     <!-- 入口 -->
     <view class="menu-card" wx:if="{{internal}}" bind:tap="onGoCost">
-      <text>{i18n.dashboardOpenCost}</text><text class="arrow">›</text>
+      <text>{{i18n.dashboardOpenCost}}</text><text class="arrow">›</text>
     </view>
     <view class="menu-card" bind:tap="onGoExport">
-      <text>{i18n.dashboardOpenExport}</text><text class="arrow">›</text>
+      <text>{{i18n.dashboardOpenExport}}</text><text class="arrow">›</text>
     </view>
   </view>
 </view>
