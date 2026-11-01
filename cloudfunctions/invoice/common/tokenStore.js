@@ -3,9 +3,9 @@
  * 设计（对应项目书 2-1 双 Token 方案 + 安全红线）：
  *  - access_token（2h）+ refresh_token（7d），HMAC-SHA256 服务端签名
  *  - 载荷含 sub(openid)/role/ver(token_version)/jti/exp，服务端验签 + 版本 + 黑名单
- *  - 密钥仅存云函数环境变量 TOKEN_SECRET（前端零密钥）；未配置时拒绝签发（不提供默认密钥兜底）
+ *  - 密钥仅存云函数环境变量 LOGIN_SECRET（前端零密钥）；未配置时拒绝签发（不提供默认密钥兜底）
  *  - 吊销：token_blacklist 集合记录 jti，authGuard 每次请求校验；改密/强制下线 = users.token_version +1
- * 安全红线：本文件不出现任何密钥字面量；生产必须配置环境变量 TOKEN_SECRET（>=32 字符随机串）
+ * 安全红线：本文件不出现任何密钥字面量；生产必须配置环境变量 LOGIN_SECRET（>=32 字符随机串）
  */
 const crypto = require('crypto');
 const cloud = require('wx-server-sdk');
@@ -19,9 +19,9 @@ const SEP = '.';
 
 /** 取签名密钥；未配置时抛错（禁止弱默认密钥） */
 function secret() {
-  const s = process.env.TOKEN_SECRET;
+  const s = process.env.LOGIN_SECRET;
   if (!s || s.length < 32) {
-    throw new Error('TOKEN_SECRET not configured or too short (>=32 chars)');
+    throw new Error('LOGIN_SECRET not configured or too short (>=32 chars)');
   }
   return s;
 }

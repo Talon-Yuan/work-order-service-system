@@ -19,9 +19,9 @@ const SEP = '.';
 
 /** 取签名密钥；未配置时抛错（禁止弱默认密钥） */
 function secret() {
-  const s = process.env.TOKEN_SECRET;
+  const s = process.env.LOGIN_SECRET;
   if (!s || s.length < 32) {
-    throw new Error('TOKEN_SECRET not configured or too short (>=32 chars)');
+    throw new Error('LOGIN_SECRET not configured or too short (>=32 chars)');
   }
   return s;
 }
