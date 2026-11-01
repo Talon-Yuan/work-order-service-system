@@ -20,10 +20,5 @@
       "outputPath": ""
     }
   },
-  "packOptions": {
-    "include": [
-      "miniprogram/utils/lang/"
-    ]
-  },
   "condition": {}
 }
